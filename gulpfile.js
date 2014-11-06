@@ -1,5 +1,6 @@
 gulp = require('gulp');
 less = require('gulp-less');
+minify = require('gulp-minify-css');
 sourcemaps = require('gulp-sourcemaps');
 
 var paths = {
@@ -10,6 +11,7 @@ gulp.task('less', function() {
   return gulp.src(paths.less)
     .pipe(sourcemaps.init())
     .pipe(less())
+    .pipe(minify())
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('css'));
 })
