@@ -20,21 +20,17 @@ gulp.task('less', function() {
     .pipe(gulp.dest('css'));
 });
 
-gulp.task('build-js', function() {
+gulp.task('build-js', function(cb) {
   return gulp.src(paths.js)
     .pipe(concat('build.js'))
-    .pipe(minify())
-    .pipe(sourcemaps.write())
-    .pipe(gulp.dest('js'));
+    // .pipe(minify())
+    // .pipe(sourcemaps.write())
+    .pipe(gulp.dest('js'))
 });
 
 gulp.task('watch', function() {
-  var less = gulp.src(paths.less)
-    .pipe(watch(paths.less), 'less');
-  var js = gulp.src(paths.js)
-    .pipe(watch(paths.js), 'build-js');
-
-  return merge(less, js);
+  gulp.watch(paths.less, ['less']);
+  gulp.watch(paths.js, ['build-js']);
 });
 
-gulp.task('default', ['watch', 'less', 'build-js']);
+gulp.task('default', ['less', 'build-js', 'watch']);
