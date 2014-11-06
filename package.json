@@ -13,7 +13,9 @@
     "main-bower-files": "^2.2.0",
     "gulp-minify-css": "^0.3.11"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "gulp-sourcemaps": "^1.2.7"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
