@@ -17,8 +17,9 @@ App.PostsRoute = Ember.Route.extend({
 });
 
 App.PostsIndexRoute = Ember.Route.extend({
+  controllerName: 'posts',
   model: function() {
-    return this.store.find('post');
+    return this.modelFor('posts');
   }
 });
 
@@ -27,7 +28,8 @@ App.PostController = Ember.ObjectController.extend({
 });
 
 App.PostsController = Ember.ArrayController.extend({
-
+  sortAscending: false,
+  sortProperties: ['date']
 });
 
 App.Post = DS.Model.extend({
@@ -40,7 +42,11 @@ App.Post = DS.Model.extend({
     a.href = this.get('link');
 
     return a.hostname;
-  }.property('link')
+  }.property('link'),
+
+  timeAgo: function() {
+    return moment(this.get('date')).fromNow()
+  }.property('date')
 });
 
 App.Post.FIXTURES = [

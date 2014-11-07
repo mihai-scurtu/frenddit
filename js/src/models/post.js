@@ -8,7 +8,11 @@ App.Post = DS.Model.extend({
     a.href = this.get('link');
 
     return a.hostname;
-  }.property('link')
+  }.property('link'),
+
+  timeAgo: function() {
+    return moment(this.get('date')).fromNow()
+  }.property('date')
 });
 
 App.Post.FIXTURES = [

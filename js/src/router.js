@@ -10,7 +10,8 @@ App.PostsRoute = Ember.Route.extend({
 });
 
 App.PostsIndexRoute = Ember.Route.extend({
+  controllerName: 'posts',
   model: function() {
-    return this.store.find('post');
+    return this.modelFor('posts');
   }
 });
