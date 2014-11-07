@@ -30,7 +30,14 @@ App.PostsController = Ember.ArrayController.extend({
 
 App.Post = DS.Model.extend({
   title: DS.attr('string'),
-  link: DS.attr('string')
+  link: DS.attr('string'),
+
+  domain: function() {
+    var a = document.createElement('a');
+    a.href = this.get('link');
+
+    return a.hostname;
+  }.property('link')
 });
 
 App.Post.FIXTURES = [
