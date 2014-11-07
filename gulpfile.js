@@ -1,14 +1,18 @@
-gulp = require('gulp');
-less = require('gulp-less');
-minify = require('gulp-minify-css');
-concat = require('gulp-concat');
-sourcemaps = require('gulp-sourcemaps');
-merge = require('merge-stream');
-watch = require('gulp-watch');
+var gulp = require('gulp');
+var less = require('gulp-less');
+var minify = require('gulp-minify-css');
+var concat = require('gulp-concat');
+var sourcemaps = require('gulp-sourcemaps');
+var merge = require('merge-stream');
+var watch = require('gulp-watch');
+var handlebars = require('gulp-handlebars')
+var declare = require('gulp-declare');
+var wrap = require('gulp-wrap');
 
 var paths = {
   less: ['css/**/*.less'],
-  js: ['js/src/**/*.js']
+  js: ['js/src/**/*.js'],
+  templates: ['templates/**/*.hbs']
 }
 
 gulp.task('less', function() {
@@ -28,9 +32,34 @@ gulp.task('build-js', function(cb) {
     .pipe(gulp.dest('js'))
 });
 
+gulp.task('templates', function() {
+  return gulp.src(paths.templates)
+    .pipe(handlebars({
+      handlebars: require('ember-handlebars')
+    }))
+    .pipe(wrap('Handlebars.template(<%= contents %>)'))
+    .pipe(declare({
+      namespace: 'Ember.TEMPLATES',
+      noRedeclare: true, // Avoid duplicate declarations
+      processName: function(filePath) {
+        var path = require('path');
+        filePath = filePath.replace(/\\/g, '/'); //change windows slashes
+       
+        var n = path.extname(filePath).length;
+        var nameNoExt = n === 0 ? filePath : filePath.slice(0, -n); // remove extension
+        var name = nameNoExt.split('templates/')[1];
+
+        return name;
+      } 
+    }))
+    .pipe(concat('templates.js')) 
+    .pipe(gulp.dest('js/'));
+});
+
 gulp.task('watch', function() {
   gulp.watch(paths.less, ['less']);
   gulp.watch(paths.js, ['build-js']);
+  gulp.watch(paths.templates, ['templates']);
 });
 
-gulp.task('default', ['less', 'build-js', 'watch']);
+gulp.task('default', ['less', 'build-js', 'templates', 'watch']);

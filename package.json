@@ -14,6 +14,10 @@
     "gulp-minify-css": "^0.3.11"
   },
   "devDependencies": {
+    "ember-handlebars": "^1.2.0",
+    "gulp-declare": "^0.3.0",
+    "gulp-ember-templates": "^0.5.2",
+    "gulp-handlebars": "^3.0.1",
     "gulp-sourcemaps": "^1.2.7",
     "gulp-watch": "^1.1.0",
     "merge-stream": "^0.1.6"
