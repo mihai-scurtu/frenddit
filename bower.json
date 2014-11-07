@@ -6,16 +6,9 @@
   ],
   "license": "MIT",
   "private": true,
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
   "dependencies": {
     "bootstrap": "~3.3.0",
-    "ember-data": "~0.0.14",
+    "ember-data": "~1.0.0",
     "ember": "~1.8.1",
     "emberfire": "~1.2.7"
   },
