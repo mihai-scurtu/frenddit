@@ -1,6 +1,7 @@
 App.Post = DS.Model.extend({
   title: DS.attr('string'),
   link: DS.attr('string'),
+  date: DS.attr('date'),
 
   domain: function() {
     var a = document.createElement('a');

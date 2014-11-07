@@ -1,6 +1,8 @@
 window.App = Ember.Application.create();
 App.Store = DS.Store.extend({
-  adapter: DS.FixtureAdapter.create()
+  adapter: DS.FirebaseAdapter.extend({
+    firebase: new Firebase('https://frenddit.firebaseio.com/data/rest')
+  })
 });
 
 App.Router.map(function() {
@@ -31,6 +33,7 @@ App.PostsController = Ember.ArrayController.extend({
 App.Post = DS.Model.extend({
   title: DS.attr('string'),
   link: DS.attr('string'),
+  date: DS.attr('date'),
 
   domain: function() {
     var a = document.createElement('a');
