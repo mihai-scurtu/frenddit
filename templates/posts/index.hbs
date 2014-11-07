@@ -1,0 +1,13 @@
+<div class="container">
+{{#each}}
+  <div class="post-list">
+    <div class="post">
+      <div class="post-header">
+        <a class="title" {{bindAttr href=link}}>{{title}}</a>
+        <span class="domain">reddit.com</span>
+        <span class="time">3 hours ago</span>
+      </div>
+    </div>
+  </div>
+{{/each}}
+</div>

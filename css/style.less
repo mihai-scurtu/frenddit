@@ -1,28 +1,32 @@
 .post-list {
-  .post-header {
-    padding: 5px 20px;
-    border-radius: 5px;
-    background: #f0f0f0;
-    box-shadow: 1px 1px 1px rgba(0, 0, 0, .5);
+  .post {
+    margin: 10px 0;
+    
+    .post-header {
+      padding: 5px 20px;
+      border-radius: 5px;
+      background: #f0f0f0;
+      box-shadow: 1px 1px 1px rgba(0, 0, 0, .5);
 
-    transition: transform 0.05s ease-in;
+      transition: transform 0.05s ease-in;
 
-    &:hover {
-      transform: scale(1, 1.1);
-    }
-
-    a.title {
-      display: inline-block;
-      font-size: 18px;
-    }
-
-    span {
-      &:before {
-        content: ' - ';
+      &:hover {
+        transform: scale(1, 1.1);
       }
 
-      display: inline-block;
-      color: #aab;
+      a.title {
+        display: inline-block;
+        font-size: 18px;
+      }
+
+      span {
+        &:before {
+          content: ' - ';
+        }
+
+        display: inline-block;
+        color: #aab;
+      }
     }
   }
 }
