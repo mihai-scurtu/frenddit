@@ -7,6 +7,7 @@ App.Store = DS.Store.extend({
 
 App.Router.map(function() {
   this.resource('posts', {path: '/'}, function() {
+    this.route('new');
   });
 });
 
@@ -23,13 +24,10 @@ App.PostsIndexRoute = Ember.Route.extend({
   }
 });
 
-App.PostController = Ember.ObjectController.extend({
-  
-});
-
-App.PostsController = Ember.ArrayController.extend({
-  sortAscending: false,
-  sortProperties: ['date']
+App.PostsNewRoute = Ember.Route.extend({
+  controller: function() {
+    
+  }
 });
 
 App.Post = DS.Model.extend({
@@ -54,3 +52,27 @@ App.Post.FIXTURES = [
   {id: 2, title: 'Procrastination', link: 'http://facebook.com'},
   {id: 3, title: 'Do not click this', link: 'http://4chan.com'}
 ];
+
+App.PostController = Ember.ObjectController.extend({
+  
+});
+
+App.PostsController = Ember.ArrayController.extend({
+  sortAscending: false,
+  sortProperties: ['date']
+});
+
+App.PostsNewController = Ember.Controller.extend({
+  post: {},
+  actions: {
+    save: function() {
+      var post = this.get('post');
+      console.log(post);
+      if(post.title.length && post.link.length) {
+        post.date = new Date();
+        var newPost = this.store.createRecord('post', post);
+        newPost.save();
+      }
+    } 
+  } 
+});

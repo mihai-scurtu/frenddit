@@ -1,5 +1,6 @@
 App.Router.map(function() {
   this.resource('posts', {path: '/'}, function() {
+    this.route('new');
   });
 });
 
@@ -13,5 +14,11 @@ App.PostsIndexRoute = Ember.Route.extend({
   controllerName: 'posts',
   model: function() {
     return this.modelFor('posts');
+  }
+});
+
+App.PostsNewRoute = Ember.Route.extend({
+  controller: function() {
+    
   }
 });

@@ -1,15 +1,16 @@
 <div class="container">
-{{#each}}
-  <div class="post-list">
-    <div class="post">
-      <div class="post-header">
-        <a class="title" {{bindAttr href=link}}>{{title}}</a>
-        <span class="domain">{{domain}}</span>
-        <span class="time">{{timeAgo}}</span>
+  {{link-to "New post" "posts.new" class="btn btn-primary"}}
+  {{#each}}
+    <div class="post-list">
+      <div class="post">
+        <div class="post-header">
+          <a class="title" {{bindAttr href=link}}>{{title}}</a>
+          <span class="domain">{{domain}}</span>
+          <span class="time">{{timeAgo}}</span>
+        </div>
       </div>
     </div>
-  </div>
-{{else}}
-  <p>No posts yet</p>
-{{/each}}
+  {{else}}
+    <p>No posts yet</p>
+  {{/each}}
 </div>
