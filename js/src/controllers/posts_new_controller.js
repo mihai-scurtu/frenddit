@@ -8,6 +8,8 @@ App.PostsNewController = Ember.Controller.extend({
         post.date = new Date();
         var newPost = this.store.createRecord('post', post);
         newPost.save();
+
+        this.transitionToRoute('posts.index');
       }
     } 
   } 
