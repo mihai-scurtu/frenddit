@@ -1,10 +1,12 @@
 import DS from 'ember-data';
 
-// global moment
+/* global moment */
 export default DS.Model.extend({
   title: DS.attr('string'),
   link: DS.attr('string'),
   date: DS.attr('date'),
+
+  comments: DS.hasMany('comment', {async: true}),
 
   domain: function() {
     var a = document.createElement('a');
@@ -14,6 +16,6 @@ export default DS.Model.extend({
   }.property('link'),
 
   timeAgo: function() {
-    return moment(this.get('date')).fromNow()
+    return moment(this.get('date')).fromNow();
   }.property('date')
 });
