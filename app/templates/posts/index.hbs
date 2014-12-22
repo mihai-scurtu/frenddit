@@ -1,15 +1,7 @@
 <div class="container">
   {{link-to "New post" "posts.new" class="btn btn-primary"}}
   {{#each post in model}}
-    <div class="post-list">
-      <div class="post">
-        <div class="post-header">
-          <a class="title" {{bind-attr href=post.link}} target="_blank">{{post.title}}</a>
-          <span class="domain">{{post.domain}}</span>
-          <span class="time">{{post.timeAgo}}</span>
-        </div>
-      </div>
-    </div>
+    {{post-title post=post}}
   {{else}}
     <p>No posts yet</p>
   {{/each}}
