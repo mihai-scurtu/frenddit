@@ -25,12 +25,40 @@
 
       span {
         &:before {
-          content: ' - ';
+          content: ' \b7\a0 ';
         }
 
         display: inline-block;
         color: #aab;
       }
+    }
+  }
+}
+
+.comment-list {
+  list-style-type: none;
+  padding: 0;
+
+  li {
+    padding: 5px 20px;
+    margin: 0 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px #aaa solid;
+
+    .comment-header {
+      color: #aaa;
+      margin: 0;;
+
+      span:not(:first-child):before {
+        content: ' \b7\a0 ';
+      }
+    }
+
+    .comment-body {
+      margin: 0;
+      color: #000;
+      padding: 5px 20px;
     }
   }
 }

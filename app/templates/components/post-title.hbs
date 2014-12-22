@@ -4,6 +4,7 @@
       <a class="title" {{bind-attr href=post.link}} target="_blank">{{post.title}}</a>
       <span class="domain">{{post.domain}}</span>
       <span class="time">{{post.timeAgo}}</span>
+      <span class="comments">{{#link-to 'post' post}}{{post.comments.length}} comments{{/link-to}}</span>
     </div>
   </div>
 </div>

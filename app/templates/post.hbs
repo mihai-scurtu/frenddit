@@ -1,0 +1,48 @@
+<div class="container">
+  {{post-title post=model}}
+
+  <div class="row">
+    <form action="" class="col-md-6 comment-form">
+      <p>Add comment</p>
+
+      <div class="form-group">
+        <label for="">Name</label>
+        {{input type="text" value=comment.name class="form-control"}}
+      </div>
+
+      <div class="form-group">
+        <label for="">Email</label>
+        {{input type="text" value=comment.email class="form-control"}}
+      </div>
+
+      <div class="form-group">
+        <label for="">Comment</label>
+        {{textarea type="text" value=comment.text class="form-control"}}
+      </div>
+
+      <div class="form-footer">
+        <button {{action "addComment"}} class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <hr>
+
+  {{#if comments}}
+    <ul class="comment-list">
+    {{#each comment in sortedComments}}
+      <li>
+        <p class="comment-header">
+          <span class="name">{{comment.name}}</span>
+          <span class="time-ago">{{comment.timeAgo}}</span>
+        </p>
+        <p class="comment-body">
+          {{comment.text}}
+        </p>
+      </li>
+      {{/each}}
+    </ul>
+  {{else}}
+    <p>No comments yet.</p>
+  {{/if}}
+</div>

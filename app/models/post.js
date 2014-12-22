@@ -8,6 +8,12 @@ export default DS.Model.extend({
 
   comments: DS.hasMany('comment', {async: true}),
 
+  sortedComments: function() {
+    var comments = this.get('comments');
+
+    return comments.sortBy('date').reverseObjects();
+  }.property('comments.@each.date'),
+
   domain: function() {
     var a = document.createElement('a');
     a.href = this.get('link');

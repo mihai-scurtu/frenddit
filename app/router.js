@@ -9,7 +9,8 @@ Router.map(function() {
   this.resource('posts', {path: '/'}, function() {
     this.route('new');
   });
-  this.route('posts/new');
+
+  this.resource('post', {path: 'posts/:post_id'});
 });
 
 export default Router;
