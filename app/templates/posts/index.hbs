@@ -4,7 +4,7 @@
     <div class="post-list">
       <div class="post">
         <div class="post-header">
-          <a class="title" {{bind-attr href=link}}>{{post.title}}</a>
+          <a class="title" {{bind-attr href=post.link}} target="_blank">{{post.title}}</a>
           <span class="domain">{{post.domain}}</span>
           <span class="time">{{post.timeAgo}}</span>
         </div>
